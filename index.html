@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <title>DelivEats — Pesan Makanan, Antar Cepat!</title>
+    <meta name="description" content="Layanan pemesanan makanan online tercepat. Nikmati ribuan pilihan restoran favoritmu, dikirim langsung ke rumah." />
+    
+    <style>
+        /* === GLOBAL === */
+        :root {
+            --light-green: #a8d8b9;
+            --light-brown: #d4b996;
+            --dark-green: #5b8c5a;
+            --off-white: #f9f9f9;
+            --text-dark: #333;
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* === HEADER / HERO === */
+        .hero {
+            position: relative;
+            height: 100vh;
+            max-height: 800px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--light-green) 0%, var(--light-brown) 100%);
+            z-index: -2;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+            z-index: -1;
+        }
+
+        .content {
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(6px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--dark-green);
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 28px;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 36px;
+            background: var(--dark-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(91, 140, 90, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #4a7a49;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(91, 140, 90, 0.4);
+        }
+
+        /* === FOOTER === */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 600px) {
+            .logo { font-size: 2.2rem; }
+            .tagline { font-size: 1.1rem; }
+            .content { padding: 30px 20px; }
+        }
+
+        /* Hide native scrollbars and disable overscroll visual chrome */
+        html, body {
+            -webkit-touch-callout: none; /* disable callout, long press */
+            -webkit-user-select: none; /* prevent selection */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none; /* standard property for compatibility */
+            overscroll-behavior: none;
+        }
+
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <!-- Gambar acak makanan dari Unsplash (free, no API key) -->
+        <img 
+            src="https://source.unsplash.com/random/1600x900/?food,delicious" 
+            alt="Makanan lezat dari DelivEats" 
+            class="hero-image"
+            loading="lazy"
+        />
+        
+        <div class="content">
+            <div class="logo">DelivEats</div>
+            <p class="tagline">Nikmati makanan favoritmu, dikirim cepat & segar ke depan pintu.</p>
+            <a href="https://deliveats.ruswanda.my.id/DelivEats_login/register.php" class="cta-button">Mulai Pesan Sekarang</a>
+        </div>
+
+        <div class="footer">
+            © 2026 DelivEats. Semua hak dilindungi.
+        </div>
+    </div>
+    <script>
+        // Disable context menu and long-press actions that reveal browser UI
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.addEventListener('gesturestart', function (e) { e.preventDefault(); });
+        // Prevent double-tap zoom
+        let lastTouch = 0;
+        document.addEventListener('touchend', function (e) {
+            const now = Date.now();
+            if (now - lastTouch <= 300) {
+                e.preventDefault();
+            }
+            lastTouch = now;
+        }, { passive: false });
+    </script>
+</body>
+</html>
