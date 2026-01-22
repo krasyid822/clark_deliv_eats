@@ -44,8 +44,6 @@ class FullscreenWebView extends StatefulWidget {
 }
 
 class _FullscreenWebViewState extends State<FullscreenWebView> {
-  InAppWebViewController? _controller;
-
   @override
   void initState() {
     super.initState();
@@ -53,21 +51,17 @@ class _FullscreenWebViewState extends State<FullscreenWebView> {
 
   @override
   Widget build(BuildContext context) {
-    final options = InAppWebViewGroupOptions(
-      crossPlatform: InAppWebViewOptions(
-        javaScriptEnabled: true,
-        transparentBackground: true,
-      ),
-      android: AndroidInAppWebViewOptions(geolocationEnabled: true),
+    final settings = InAppWebViewSettings(
+      javaScriptEnabled: true,
+      transparentBackground: true,
     );
 
     return SizedBox.expand(
       child: InAppWebView(
         // Load bundled HTML directly from assets to avoid blank screen while awaiting initial data
         initialFile: 'assets/index.html',
-        initialOptions: options,
+        initialSettings: settings,
         onWebViewCreated: (controller) {
-          _controller = controller;
           controller.addJavaScriptHandler(
             handlerName: 'AppChannel',
             callback: (args) async {
